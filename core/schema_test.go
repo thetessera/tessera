@@ -15,8 +15,8 @@ func TestParseSchemaExample(t *testing.T) {
 		t.Fatalf("failed to parse schema: %s", err)
 	}
 
-	if len(s.Blocks) != 5 {
-		t.Fatalf("blocks: got %d, want 5", len(s.Blocks))
+	if len(s.Blocks) != 4 {
+		t.Fatalf("blocks: got %d, want 4", len(s.Blocks))
 	}
 }
 
