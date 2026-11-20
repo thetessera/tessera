@@ -1,0 +1,34 @@
+{
+  "tessera": 1,
+  "schema": "profile",
+  "schemaVersion": 1,
+  "root": {
+    "slots": {
+      "content": [
+        {
+          "id": "p2x8v5n1",
+          "type": "text",
+          "props": {
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Hello."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "k7f3m2q9",
+          "type": "header",
+          "props": {
+            "name": "Aruzhan Bekova"
+          }
+        }
+      ]
+    }
+  }
+}

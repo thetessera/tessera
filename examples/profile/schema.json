@@ -1,0 +1,135 @@
+{
+  "tessera": 1,
+  "name": "profile",
+  "version": 1,
+  "limits": {
+    "maxBlocks": 30,
+    "maxDepth": 2
+  },
+  "root": {
+    "slots": {
+      "content": {
+        "max": 12,
+        "allow": {
+          "header": { "min": 1, "max": 1, "position": "first" },
+          "text": { "max": 4 },
+          "links": { "max": 2 },
+          "columns": { "max": 2 }
+        }
+      }
+    }
+  },
+  "blocks": {
+    "header": {
+      "label": "Header",
+      "description": "Name, short tagline and avatar. Always the first block of a profile.",
+      "props": {
+        "name": {
+          "type": "string",
+          "label": "Name",
+          "required": true,
+          "maxLength": 60
+        },
+        "tagline": {
+          "type": "string",
+          "label": "Tagline",
+          "maxLength": 120
+        },
+        "avatar": {
+          "type": "object",
+          "label": "Avatar",
+          "fields": {
+            "src": {
+              "type": "url",
+              "required": true,
+              "protocols": ["https"],
+              "hosts": ["cdn.example.com"]
+            },
+            "alt": {
+              "type": "string",
+              "maxLength": 120
+            }
+          }
+        }
+      }
+    },
+    "text": {
+      "label": "Text",
+      "description": "A section of formatted text with an optional heading.",
+      "props": {
+        "heading": {
+          "type": "string",
+          "label": "Heading",
+          "maxLength": 80
+        },
+        "body": {
+          "type": "richtext",
+          "label": "Text",
+          "required": true,
+          "maxLength": 2000,
+          "nodes": ["paragraph"],
+          "marks": ["bold", "italic"],
+          "links": {
+            "protocols": ["https"]
+          }
+        }
+      }
+    },
+    "links": {
+      "label": "Links",
+      "description": "A list of external links, such as social profiles or a portfolio.",
+      "props": {
+        "items": {
+          "type": "list",
+          "label": "Links",
+          "required": true,
+          "minItems": 1,
+          "maxItems": 8,
+          "of": {
+            "type": "object",
+            "fields": {
+              "label": {
+                "type": "string",
+                "required": true,
+                "maxLength": 40
+              },
+              "href": {
+                "type": "url",
+                "required": true,
+                "protocols": ["https", "mailto"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "columns": {
+      "label": "Columns",
+      "description": "Two columns side by side. Each column holds text and links blocks.",
+      "props": {
+        "ratio": {
+          "type": "enum",
+          "label": "Width ratio",
+          "options": ["1:1", "1:2", "2:1"],
+          "default": "1:1"
+        }
+      },
+      "slots": {
+        "left": {
+          "max": 3,
+          "allow": {
+            "text": {},
+            "links": {}
+          }
+        },
+        "right": {
+          "max": 3,
+          "allow": {
+            "text": {},
+            "links": {}
+          }
+        }
+      }
+    }
+  }
+}
